@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SSL TEST RESULTS</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'test_ssl/style.css' %}">
+    <script src="{% static "test_ssl/jquery-latest.js" %}"></script>
+    <script src="{% static "test_ssl/jquery.tablesorter.js" %}"></script>
+    <script>
+    $(document).ready(function() {
+    $("table").tablesorter({
+        // pass the headers argument and assing a object
+        headers: {
+
+            0: {
+                // disable it by setting the property sorter to false
+                sorter: false
+            },
+            1: {
+                // disable it by setting the property sorter to false
+                sorter: false
+            },
+            // assign the third column (we start counting zero)
+            2: {
+                // disable it by setting the property sorter to false
+                sorter: false
+            },
+            6: {
+                // disable it by setting the property sorter to false
+                sorter: false
+            }
+        }
+    });
+});
+    </script>
+</head>
+<body>
+<a href="."><input type="button" value="Back"/></a>
+{% if certs %}
+<table class="tg" class="tablesorter" id="myTable">
+    <thead >
+        <tr>
+            <th class="tg-baqh">IP</th>
+            <th class="tg-baqh">Subject</th>
+            <th class="tg-baqh">Issuer</th>
+            <th class="tg-baqh">Signature Algorithm</th>
+            <th class="tg-baqh">Valid from</th>
+            <th class="tg-baqh">Valid until</th>
+            <th class="tg-baqh">Alternative names</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for i in certs %}
+        <tr>
+            <td>{{ i.0 }}</td>
+            <td>{{ i.1 }}</td>
+            <td>{{ i.2 }}</td>
+            <td>{{ i.3 }}</td>
+            <td>{{ i.4 }}</td>
+            <td>{{ i.5 }}</td>
+            <td>{{ i.6 }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<h1>Nothing found in this ip range</h1>
+{% endif %}
+
+</body>
+</html>
