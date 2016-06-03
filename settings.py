@@ -80,10 +80,10 @@ WSGI_APPLICATION = 'matchos_project.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'p1407_matchosdb',
-        'USER': 'p1407_matchosdb',
-        'PASSWORD': 'Matchos1',
-        'HOST': 'pgsql7.mydevil.net',
+        'NAME': 'dbo',
+        'USER': 'dbuser',
+        'PASSWORD': 'dbpassword',
+        'HOST': 'localhost',
         'PORT': '',
     }
 }
